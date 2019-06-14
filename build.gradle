@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'no.nav.poc'
+version '1.0'
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/navikt")
+            credentials {
+                username = System.getenv("GH_PACKAGES_USERNAME")
+                password = System.getenv("GH_PACKAGES_PASSWORD")
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            pom {
+                name = "github-package-registry-gradle"
+                description = "A test project for the maven-publish plugin"
+                url = "https://github.com/navikt/github-package-registry-gradle"
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://opensource.org/licenses/MIT"
+                    }
+                }
+
+                scm {
+                    connection = "scm:git:https://github.com/navikt/github-package-registry-gradle.git"
+                    developerConnection = "scm:git:https://github.com/navikt/github-package-registry-gradle.git"
+                    url = "https://github.com/navikt/github-package-registry-gradle"
+                }
+            }
+            from components.java
+        }
+    }
+}
