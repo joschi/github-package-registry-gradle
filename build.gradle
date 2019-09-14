@@ -5,13 +5,13 @@ plugins {
     id 'maven-publish'
 }
 
-group 'no.nav.poc'
-version '1.0-5'
+group 'com.example.github-repository-test'
+version '1.0.0-2'
 
 publishing {
     repositories {
         maven {
-            url = uri("https://maven.pkg.github.com/navikt")
+            url = uri("https://maven.pkg.github.com/joschi/github-package-registry-gradle")
             credentials {
                 username = System.getenv("GH_PACKAGES_USERNAME")
                 password = System.getenv("GH_PACKAGES_PASSWORD")
@@ -23,7 +23,7 @@ publishing {
             pom {
                 name = "github-package-registry-gradle"
                 description = "A test project for the maven-publish plugin"
-                url = "https://github.com/navikt/github-package-registry-gradle"
+                url = "https://github.com/joschi/github-package-registry-gradle"
                 licenses {
                     license {
                         name = "MIT License"
@@ -32,9 +32,9 @@ publishing {
                 }
 
                 scm {
-                    connection = "scm:git:https://github.com/navikt/github-package-registry-gradle.git"
-                    developerConnection = "scm:git:https://github.com/navikt/github-package-registry-gradle.git"
-                    url = "https://github.com/navikt/github-package-registry-gradle"
+                    connection = "scm:git:https://github.com/joschi/github-package-registry-gradle.git"
+                    developerConnection = "scm:git:https://github.com/joschi/github-package-registry-gradle.git"
+                    url = "https://github.com/joschi/github-package-registry-gradle"
                 }
             }
             from components.java
